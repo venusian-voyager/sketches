@@ -29,7 +29,12 @@ abstract class Sketch implements SketchContract
 
     public function boot(): void {}
 
-    abstract public function loop(): SketchLoopResult;
+    /**
+     * One frame. The runner calls it at the refresh rate.
+     *
+     * @param list<object> $mail what the loop delivered since the last frame; empty when nothing did
+     */
+    abstract public function loop(array $mail = []): SketchLoopResult;
 
     public function shutdown(): void {}
 }
